@@ -28,13 +28,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  List<Widget> list = [
+    Photo(
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Fujitsu-Logo.svg/1200px-Fujitsu-Logo.svg.png'),
+    Photo(
+        'https://img-cdn.guide.travel.co.jp/article/699/20160905212623/445977319B8C4879983132E250BB21AD_LL.jpg'),
+    Photo(
+        'https://cdn.zekkei-japan.jp/images/areas/db284a40bc008c81929eea5101690368.jpg'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +43,87 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: list,
+      ),
+    );
+  }
+}
+
+class Photo extends StatelessWidget {
+  Photo(this.url);
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Hero(
+        tag: url,
+        child: Image.network(
+          url,
+          fit: BoxFit.cover,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      onLongPress: () async {
+        await Navigator.push(
+            context,
+            PageRouteBuilder(
+                opaque: false,
+                fullscreenDialog: true,
+                barrierDismissible: true,
+                barrierColor: Colors.black.withOpacity(0.5),
+                pageBuilder: (BuildContext context, _, __) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Scaffold(
+                      backgroundColor: Colors.black.withOpacity(0.5),
+                      body: Center(
+                        child: Hero(
+                          tag: url,
+                          child: Image.network(
+                            url,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }));
+        // await showDialog(
+        //     context: context,
+        //     builder: (context) {
+        //       return Column(
+        //         children: <Widget>[
+        //           Hero(
+        //             tag: url,
+        //             child: AlertDialog(
+        //               backgroundColor: Colors.transparent,
+        //               title: Text("タイトル"),
+        //               content: SingleChildScrollView(
+        //                 child: ListBody(
+        //                   children: <Widget>[
+        //                     Column(
+        //                       children: [
+        //                         Image.network(url),
+        //                         Text('AAA'),
+        //                       ],
+        //                     ),
+        //                   ],
+        //                 ),
+        //               ),
+        //               actions: <Widget>[
+        //                 // ボタン
+        //               ],
+        //             ),
+        //           ),
+        //         ],
+        //       );
+        //     });
+      },
     );
   }
 }
