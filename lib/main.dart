@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grid_view_long_tap/sample1/sample1.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,11 +14,40 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: <String, WidgetBuilder>{
+        '/sample1': (BuildContext context) => Sample1(),
+      },
+      home: Home(),
     );
   }
 }
 
+class Home extends StatelessWidget {
+  const Home({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('ホーム')),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text('画像を長押しすると、画像が前面に出てくる。'),
+            leading: Text('1'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample1');
+            },
+          )
+        ],
+      ),
+    );
+  }
+}
+
+/*
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -28,15 +58,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> list = [
-    Photo(
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Fujitsu-Logo.svg/1200px-Fujitsu-Logo.svg.png'),
-    Photo(
-        'https://img-cdn.guide.travel.co.jp/article/699/20160905212623/445977319B8C4879983132E250BB21AD_LL.jpg'),
-    Photo(
-        'https://cdn.zekkei-japan.jp/images/areas/db284a40bc008c81929eea5101690368.jpg'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +77,8 @@ class Photo extends StatelessWidget {
 
   final String url;
 
+  TapDownDetails details;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -66,64 +89,106 @@ class Photo extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
+      onTapDown: (TapDownDetails tapDownDetails) {
+        print('1: onTapDown');
+        print(tapDownDetails.globalPosition.dx);
+        details = tapDownDetails;
+      },
       onLongPress: () async {
         await Navigator.push(
-            context,
-            PageRouteBuilder(
-                opaque: false,
-                fullscreenDialog: true,
-                barrierDismissible: true,
-                barrierColor: Colors.black.withOpacity(0.5),
-                pageBuilder: (BuildContext context, _, __) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Scaffold(
-                      backgroundColor: Colors.black.withOpacity(0.5),
-                      body: Center(
-                        child: Hero(
+          context,
+          PageRouteBuilder(
+            opaque: false,
+            fullscreenDialog: true,
+            barrierDismissible: true,
+            barrierColor: Colors.black.withOpacity(0.5),
+            pageBuilder: (BuildContext context, _, __) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Scaffold(
+                  backgroundColor: Colors.black.withOpacity(0.5),
+                  body: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Hero(
                           tag: url,
                           child: Image.network(
                             url,
                             fit: BoxFit.cover,
                           ),
                         ),
-                      ),
+                        ActionMenu(),
+                      ],
                     ),
-                  );
-                }));
-        // await showDialog(
-        //     context: context,
-        //     builder: (context) {
-        //       return Column(
-        //         children: <Widget>[
-        //           Hero(
-        //             tag: url,
-        //             child: AlertDialog(
-        //               backgroundColor: Colors.transparent,
-        //               title: Text("タイトル"),
-        //               content: SingleChildScrollView(
-        //                 child: ListBody(
-        //                   children: <Widget>[
-        //                     Column(
-        //                       children: [
-        //                         Image.network(url),
-        //                         Text('AAA'),
-        //                       ],
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //               actions: <Widget>[
-        //                 // ボタン
-        //               ],
-        //             ),
-        //           ),
-        //         ],
-        //       );
-        //     });
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       },
     );
   }
 }
+
+class ActionMenu extends StatefulWidget {
+  ActionMenu(this.open);
+
+  bool open = true;
+
+  @override
+  _ActionMenuState createState() => _ActionMenuState();
+}
+
+class _ActionMenuState extends State<ActionMenu> {
+  double _width = 100;
+  double _height = 200;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _width = 100;
+        _height = 300;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 100),
+      width: _width,
+      height: _height,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FlatButton(
+              onPressed: () {},
+              child: Text('Hello'),
+            ),
+            FlatButton(
+              onPressed: () {},
+              child: Text('Hello'),
+            ),
+            FlatButton(
+              onPressed: () {},
+              child: Text('Hello'),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+*/
