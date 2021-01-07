@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grid_view_long_tap/sample1/sample1.dart';
+import 'package:grid_view_long_tap/sample2/sample2.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: <String, WidgetBuilder>{
         '/sample1': (BuildContext context) => Sample1(),
+        '/sample2': (BuildContext context) => Sample2(),
       },
       home: Home(),
     );
@@ -39,6 +41,14 @@ class Home extends StatelessWidget {
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.pushNamed(context, '/sample1');
+            },
+          ),
+          ListTile(
+            title: Text('長押しした場所に応じたメニューを出す'),
+            leading: Text('2'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample2');
             },
           )
         ],
