@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:grid_view_long_tap/sample1/sample1.dart';
-import 'package:grid_view_long_tap/sample2/sample2.dart';
-import 'package:grid_view_long_tap/sample3/sample3.dart';
-import 'package:grid_view_long_tap/sample4/sample4.dart';
-import 'package:grid_view_long_tap/sample5/sample5.dart';
-import 'package:grid_view_long_tap/sample6/sample6.dart';
+import 'package:grid_view_long_tap/sample1.dart';
+import 'package:grid_view_long_tap/sample2.dart';
+import 'package:grid_view_long_tap/sample3.dart';
+import 'package:grid_view_long_tap/sample4.dart';
+import 'package:grid_view_long_tap/sample5.dart';
+import 'package:grid_view_long_tap/sample6.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/sample4': (BuildContext context) => Sample4(),
         '/sample5': (BuildContext context) => Sample5(),
         '/sample6': (BuildContext context) => Sample6(),
+        '/sample7': (BuildContext context) => Sample6(),
       },
       home: Home(),
     );
@@ -91,154 +92,17 @@ class Home extends StatelessWidget {
               Navigator.pushNamed(context, '/sample6');
             },
           ),
+          ListTile(
+            title:
+                Text('6＋タップ位置に応じて拡大画像の位置を変える(GridView x Hero x バウンスアニメーション)'),
+            leading: Text('7'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample6');
+            },
+          ),
         ],
       ),
     );
   }
 }
-
-/*
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: list,
-      ),
-    );
-  }
-}
-
-class Photo extends StatelessWidget {
-  Photo(this.url);
-
-  final String url;
-
-  TapDownDetails details;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Hero(
-        tag: url,
-        child: Image.network(
-          url,
-          fit: BoxFit.cover,
-        ),
-      ),
-      onTapDown: (TapDownDetails tapDownDetails) {
-        print('1: onTapDown');
-        print(tapDownDetails.globalPosition.dx);
-        details = tapDownDetails;
-      },
-      onLongPress: () async {
-        await Navigator.push(
-          context,
-          PageRouteBuilder(
-            opaque: false,
-            fullscreenDialog: true,
-            barrierDismissible: true,
-            barrierColor: Colors.black.withOpacity(0.5),
-            pageBuilder: (BuildContext context, _, __) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Scaffold(
-                  backgroundColor: Colors.black.withOpacity(0.5),
-                  body: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Hero(
-                          tag: url,
-                          child: Image.network(
-                            url,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        ActionMenu(),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        );
-      },
-    );
-  }
-}
-
-class ActionMenu extends StatefulWidget {
-  ActionMenu(this.open);
-
-  bool open = true;
-
-  @override
-  _ActionMenuState createState() => _ActionMenuState();
-}
-
-class _ActionMenuState extends State<ActionMenu> {
-  double _width = 100;
-  double _height = 200;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        _width = 100;
-        _height = 300;
-      });
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 100),
-      width: _width,
-      height: _height,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FlatButton(
-              onPressed: () {},
-              child: Text('Hello'),
-            ),
-            FlatButton(
-              onPressed: () {},
-              child: Text('Hello'),
-            ),
-            FlatButton(
-              onPressed: () {},
-              child: Text('Hello'),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-*/
