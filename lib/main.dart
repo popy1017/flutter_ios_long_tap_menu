@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grid_view_long_tap/sample1/sample1.dart';
 import 'package:grid_view_long_tap/sample2/sample2.dart';
+import 'package:grid_view_long_tap/sample3/sample3.dart';
+import 'package:grid_view_long_tap/sample4/sample4.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/sample1': (BuildContext context) => Sample1(),
         '/sample2': (BuildContext context) => Sample2(),
+        '/sample3': (BuildContext context) => Sample3(),
+        '/sample4': (BuildContext context) => Sample4(),
       },
       home: Home(),
     );
@@ -44,13 +48,29 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('長押しした場所に応じたメニューを出す'),
+            title: Text('長押しした場所に応じた四角を出す'),
             leading: Text('2'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.pushNamed(context, '/sample2');
             },
-          )
+          ),
+          ListTile(
+            title: Text('画像を長押しするとダイアログが出る'),
+            leading: Text('2'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample3');
+            },
+          ),
+          ListTile(
+            title: Text('四角を長押しすると大きい四角が出る'),
+            leading: Text('2'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample4');
+            },
+          ),
         ],
       ),
     );
