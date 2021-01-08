@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: Text('画像を長押しすると、画像が前面に出てくる。'),
+            title: Text('画像を長押しすると、画像が前面に出てくる(GridView x Hero)。'),
             leading: Text('1'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
@@ -66,7 +66,7 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('四角を長押しすると大きい四角が出る'),
+            title: Text('四角を長押しすると大きい四角が前面に出る。(バウンスアニメーション＋Hero)'),
             leading: Text('4'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
@@ -74,7 +74,7 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('画像を長押しすると大きい画像が出る'),
+            title: Text('画像を長押しすると大きい画像が前面に出る。(バウンスアニメーション＋Hero)'),
             leading: Text('5'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
