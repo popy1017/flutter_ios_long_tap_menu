@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('長押しした場所に応じた四角を出す'),
+            title: Text('よくわからないサンプル'),
             leading: Text('2'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
@@ -56,8 +56,8 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('画像を長押しするとダイアログが出る'),
-            leading: Text('2'),
+            title: Text('よくわからないサンプル'),
+            leading: Text('3'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.pushNamed(context, '/sample3');
@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
           ),
           ListTile(
             title: Text('四角を長押しすると大きい四角が出る'),
-            leading: Text('2'),
+            leading: Text('4'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.pushNamed(context, '/sample4');
