@@ -3,6 +3,7 @@ import 'package:grid_view_long_tap/sample1/sample1.dart';
 import 'package:grid_view_long_tap/sample2/sample2.dart';
 import 'package:grid_view_long_tap/sample3/sample3.dart';
 import 'package:grid_view_long_tap/sample4/sample4.dart';
+import 'package:grid_view_long_tap/sample5/sample5.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/sample2': (BuildContext context) => Sample2(),
         '/sample3': (BuildContext context) => Sample3(),
         '/sample4': (BuildContext context) => Sample4(),
+        '/sample5': (BuildContext context) => Sample5(),
       },
       home: Home(),
     );
@@ -69,6 +71,14 @@ class Home extends StatelessWidget {
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.pushNamed(context, '/sample4');
+            },
+          ),
+          ListTile(
+            title: Text('画像を長押しすると大きい画像が出る'),
+            leading: Text('5'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample5');
             },
           ),
         ],
