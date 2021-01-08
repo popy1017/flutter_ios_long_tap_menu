@@ -11,9 +11,7 @@ class _Sample4State extends State<Sample4> with SingleTickerProviderStateMixin {
   double height = 100;
 
   AnimationController _animationController;
-
   Animation<double> _scale;
-  TickerFuture _tickerFuture;
 
   @override
   void initState() {
