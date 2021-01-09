@@ -6,6 +6,7 @@ import 'package:grid_view_long_tap/sample4.dart';
 import 'package:grid_view_long_tap/sample5.dart';
 import 'package:grid_view_long_tap/sample6.dart';
 import 'package:grid_view_long_tap/sample7.dart';
+import 'package:grid_view_long_tap/sample8.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/sample5': (BuildContext context) => Sample5(),
         '/sample6': (BuildContext context) => Sample6(),
         '/sample7': (BuildContext context) => Sample7(),
+        '/sample8': (BuildContext context) => Sample8(),
       },
       home: Home(),
     );
@@ -100,6 +102,14 @@ class Home extends StatelessWidget {
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.pushNamed(context, '/sample7');
+            },
+          ),
+          ListTile(
+            title: Text('Sample7の背景ぼかしバージョン'),
+            leading: Text('8'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.pushNamed(context, '/sample8');
             },
           ),
         ],
