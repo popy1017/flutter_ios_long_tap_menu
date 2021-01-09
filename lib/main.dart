@@ -8,6 +8,7 @@ import 'package:grid_view_long_tap/sample6.dart';
 import 'package:grid_view_long_tap/sample7.dart';
 import 'package:grid_view_long_tap/sample8.dart';
 import 'package:grid_view_long_tap/sample9.dart';
+import 'package:grid_view_long_tap/sample10.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/sample7': (BuildContext context) => Sample7(),
         '/sample8': (BuildContext context) => Sample8(),
         '/sample9': (BuildContext context) => Sample9(),
+        '/sample10': (BuildContext context) => Sample10(),
       },
       home: Home(),
     );
@@ -59,6 +61,7 @@ class Home extends StatelessWidget {
               7, 'Sample6＋タップ位置に応じて拡大画像の位置を変える(GridView x Hero x バウンスアニメーション)'),
           SampleListTile(8, 'Sample7の背景ぼかしバージョン'),
           SampleListTile(9, 'Sample8＋写真の下にアクションメニューを表示'),
+          SampleListTile(10, 'Sample9のメニューにアニメーションをつける'),
         ],
       ),
     );
