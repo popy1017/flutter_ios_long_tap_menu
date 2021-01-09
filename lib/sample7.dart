@@ -51,9 +51,13 @@ class __BouncePhotoState extends State<_BouncePhoto>
         );
   }
 
-  Future<void> _forwardAnimation() async {
+  Future<void> _bounceAnimation() async {
+    // 縮小アニメーション(.forward())の終了を待ってから、逆のアニメーション(.reverse())を実行する
     await _animationController.forward().whenComplete(() async {
+      // 端末を小さく振動させる
       Vibrate.feedback(FeedbackType.medium);
+
+      // 逆のアニメーション(元の大きさに戻る)
       _animationController.reverse();
     });
   }
@@ -68,6 +72,7 @@ class __BouncePhotoState extends State<_BouncePhoto>
 
     // Alignment(x,y)の(x,y)の値の範囲は、-1~1なので
     // 画面の幅や高さからタップ座標を-1~1に正規化
+    // → Align(0,0)は中央
     _alignment = Alignment(
       (x - halfWidth) / halfWidth,
       (y - halfHeight) / halfHeight,
@@ -75,7 +80,7 @@ class __BouncePhotoState extends State<_BouncePhoto>
   }
 
   void _showBigImage() async {
-    await _forwardAnimation();
+    await _bounceAnimation();
     Navigator.push(
       context,
       PageRouteBuilder(
@@ -93,6 +98,7 @@ class __BouncePhotoState extends State<_BouncePhoto>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      // タップ位置はonTapDownから取得する
       onTapDown: (TapDownDetails details) {
         _setBigImageAlignment(details);
       },
