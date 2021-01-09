@@ -5,6 +5,7 @@ import 'package:grid_view_long_tap/sample3.dart';
 import 'package:grid_view_long_tap/sample4.dart';
 import 'package:grid_view_long_tap/sample5.dart';
 import 'package:grid_view_long_tap/sample6.dart';
+import 'package:grid_view_long_tap/sample7.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/sample4': (BuildContext context) => Sample4(),
         '/sample5': (BuildContext context) => Sample5(),
         '/sample6': (BuildContext context) => Sample6(),
-        '/sample7': (BuildContext context) => Sample6(),
+        '/sample7': (BuildContext context) => Sample7(),
       },
       home: Home(),
     );
@@ -98,7 +99,7 @@ class Home extends StatelessWidget {
             leading: Text('7'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
-              Navigator.pushNamed(context, '/sample6');
+              Navigator.pushNamed(context, '/sample7');
             },
           ),
         ],
