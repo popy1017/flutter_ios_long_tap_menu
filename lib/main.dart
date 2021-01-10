@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
           SampleListTile(8, 'Sample7の背景ぼかしバージョン'),
           SampleListTile(9, 'Sample8＋写真の下にアクションメニューを表示'),
           SampleListTile(10, 'Sample9のメニューにアニメーションをつける'),
-          SampleListTile(11, '写真Viewを下方向のDrag操作で閉じれるようにする'),
+          SampleListTile(11, '写真Viewを下方向のDrag操作で閉じられるようにする'),
         ],
       ),
     );
