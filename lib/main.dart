@@ -9,6 +9,7 @@ import 'package:grid_view_long_tap/sample7.dart';
 import 'package:grid_view_long_tap/sample8.dart';
 import 'package:grid_view_long_tap/sample9.dart';
 import 'package:grid_view_long_tap/sample10.dart';
+import 'package:grid_view_long_tap/sample11.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/sample8': (BuildContext context) => Sample8(),
         '/sample9': (BuildContext context) => Sample9(),
         '/sample10': (BuildContext context) => Sample10(),
+        '/sample11': (BuildContext context) => Sample11(),
       },
       home: Home(),
     );
@@ -62,6 +64,7 @@ class Home extends StatelessWidget {
           SampleListTile(8, 'Sample7の背景ぼかしバージョン'),
           SampleListTile(9, 'Sample8＋写真の下にアクションメニューを表示'),
           SampleListTile(10, 'Sample9のメニューにアニメーションをつける'),
+          SampleListTile(11, '写真Viewを下方向のDrag操作で閉じれるようにする'),
         ],
       ),
     );

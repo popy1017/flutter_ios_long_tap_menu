@@ -207,7 +207,7 @@ class __ActionMenuState extends State<_ActionMenu>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 100),
     );
     _scale = _animationController
         .drive(
