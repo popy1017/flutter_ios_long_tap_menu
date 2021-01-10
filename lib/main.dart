@@ -10,6 +10,7 @@ import 'package:grid_view_long_tap/sample8.dart';
 import 'package:grid_view_long_tap/sample9.dart';
 import 'package:grid_view_long_tap/sample10.dart';
 import 'package:grid_view_long_tap/sample11.dart';
+import 'package:grid_view_long_tap/sample12.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/sample9': (BuildContext context) => Sample9(),
         '/sample10': (BuildContext context) => Sample10(),
         '/sample11': (BuildContext context) => Sample11(),
+        '/sample12': (BuildContext context) => Sample12(),
       },
       home: Home(),
     );
@@ -65,6 +67,7 @@ class Home extends StatelessWidget {
           SampleListTile(9, 'Sample8＋写真の下にアクションメニューを表示'),
           SampleListTile(10, 'Sample9のメニューにアニメーションをつける'),
           SampleListTile(11, '写真Viewを下方向のDrag操作で閉じられるようにする'),
+          SampleListTile(12, 'Flutter標準のCupertinoContextMenuを使用したVersion'),
         ],
       ),
     );
