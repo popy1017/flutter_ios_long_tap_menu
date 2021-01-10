@@ -24,7 +24,7 @@ class _Sample5State extends State<Sample5> with SingleTickerProviderStateMixin {
     );
     _scale = _animationController
         .drive(
-          CurveTween(curve: Curves.bounceIn),
+          CurveTween(curve: Curves.bounceOut),
         )
         .drive(
           Tween(begin: 1, end: 0.8),

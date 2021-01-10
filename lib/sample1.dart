@@ -41,25 +41,12 @@ class _HeroPhoto extends StatelessWidget {
             barrierDismissible: true,
             barrierColor: Colors.black.withOpacity(0.5),
             pageBuilder: (BuildContext context, _, __) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Scaffold(
-                  backgroundColor: Colors.black.withOpacity(0.5),
-                  body: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Hero(
-                          tag: url,
-                          child: Image.network(
-                            url,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
+              return Center(
+                child: Hero(
+                  tag: url,
+                  child: Image.network(
+                    url,
+                    fit: BoxFit.cover,
                   ),
                 ),
               );

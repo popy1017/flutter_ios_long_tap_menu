@@ -44,7 +44,7 @@ class __BouncePhotoState extends State<_BouncePhoto>
     );
     _scale = _animationController
         .drive(
-          CurveTween(curve: Curves.bounceIn),
+          CurveTween(curve: Curves.bounceOut),
         )
         .drive(
           Tween(begin: 1, end: 0.8),

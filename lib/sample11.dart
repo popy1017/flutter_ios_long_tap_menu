@@ -163,7 +163,7 @@ class __DetailViewState extends State<_DetailView>
     );
     _scale = _animationController
         .drive(
-          CurveTween(curve: Curves.linear),
+          CurveTween(curve: Curves.bounceOut),
         )
         .drive(
           Tween(begin: 0, end: 1),
